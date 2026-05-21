@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Calculator Methodology | whistleblowerawardcalc.com';
+const description = 'How we estimate whistleblower awards under SEC, CFTC, IRS, and False Claims Act programs.';
+---
+<BaseLayout title={title} description={description}>
+  <h1>Calculator Methodology</h1>
+
+  <h2>Award Ranges by Program</h2>
+  <p>We apply the statutory award percentage ranges established by each program:</p>
+  <ul>
+    <li><strong>SEC Whistleblower (Dodd-Frank §21F):</strong> 10%–30% of sanctions exceeding $1 million. Authority: 15 U.S.C. § 78u-6.</li>
+    <li><strong>CFTC Whistleblower (Dodd-Frank §748):</strong> 10%–30% of sanctions exceeding $1 million. Authority: 7 U.S.C. § 26.</li>
+    <li><strong>IRS Whistleblower (IRC §7623(b)):</strong> 15%–30% of collected proceeds where taxes in dispute exceed $2 million (and for individuals, gross income exceeds $200,000). Authority: 26 U.S.C. § 7623.</li>
+    <li><strong>False Claims Act (31 U.S.C. §§ 3729–3733):</strong> 15%–25% if government intervenes; 25%–30% if relator proceeds alone.</li>
+  </ul>
+
+  <h2>Award Adjustment Factors</h2>
+  <p>Within the applicable range, we adjust based on: (1) contribution level — original tip quality and whether it was the primary basis for enforcement; (2) cooperation — extent of assistance throughout the investigation. High contribution + full cooperation trends toward the upper end of the range.</p>
+
+  <h2>Threshold Check</h2>
+  <p>SEC and CFTC require minimum sanctions of $1 million. IRS requires $2 million in dispute. Below these thresholds, awards are discretionary or unavailable; we flag this for the user.</p>
+
+  <h2>Limitations</h2>
+  <p>We do not model: reductions for unreasonable delay, interference with compliance programs, prior criminal convictions, or agency-specific enhancement/reduction factors. Actual award determinations involve extensive factual analysis by the agency.</p>
+</BaseLayout>
