@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Whistleblower Award Calculator | whistleblowerawardcalc.com';
+const description = 'Estimate your potential SEC, IRS, CFTC, or False Claims Act whistleblower award based on reported violations.';
+---
+<BaseLayout title={title} description={description}>
+  <h1>Whistleblower Award Calculator</h1>
+  <p>Estimate your potential whistleblower award based on the program, sanctions collected, and contribution level. Actual awards are determined by the agency — this is an educational estimate.</p>
+  <form id="calc">
+    <label for="program">Whistleblower Program</label>
+    <select id="program">
+      <option value="sec" selected>SEC Whistleblower Program (securities fraud)</option>
+      <option value="cftc">CFTC Whistleblower Program (commodity/derivatives fraud)</option>
+      <option value="irs">IRS Whistleblower Program (tax fraud)</option>
+      <option value="fca">False Claims Act (qui tam — government contractor fraud)</option>
+    </select>
+
+    <label for="sanctions">Estimated Total Sanctions / Recoveries ($)</label>
+    <input type="number" id="sanctions" min="0" value="5000000" required />
+    <p style="font-size:.875rem;color:#555;margin-top:-.5rem">For SEC/CFTC: total fines, disgorgement, and penalties ordered. For IRS: total unpaid taxes, penalties, and interest. For FCA: total government recovery.</p>
+
+    <label for="contribution">Contribution Level</label>
+    <select id="contribution">
+      <option value="high" selected>High — original, specific, credible tip that drove the case</option>
+      <option value="medium">Medium — significant but partial contribution</option>
+      <option value="low">Low — helpful but not primary basis for enforcement</option>
+    </select>
+
+    <label for="cooperation">Cooperation Level</label>
+    <select id="cooperation">
+      <option value="full" selected>Full — provided extensive assistance throughout</option>
+      <option value="partial">Partial — some assistance provided</option>
+      <option value="limited">Limited — minimal interaction beyond initial tip</option>
+    </select>
+
+    <button type="submit">Estimate Award</button>
+  </form>
+  <div id="result"></div>
+
+  <h2>How Whistleblower Awards Work</h2>
+  <p>Federal whistleblower programs incentivize insiders to report fraud by paying a percentage of sanctions collected. Programs include:</p>
+  <ul>
+    <li><strong>SEC:</strong> 10%–30% of sanctions over $1 million</li>
+    <li><strong>CFTC:</strong> 10%–30% of sanctions over $1 million</li>
+    <li><strong>IRS:</strong> 15%–30% of collected proceeds for cases involving $2M+ in dispute</li>
+    <li><strong>False Claims Act:</strong> 15%–30% (if government intervenes) or 25%–30% (if relator proceeds alone)</li>
+  </ul>
+
+  <script>
+    document.getElementById('calc').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const program = document.getElementById('program').value;
+      const sanctions = parseFloat(document.getElementById('sanctions').value) || 0;
+      const contribution = document.getElementById('contribution').value;
+      const cooperation = document.getElementById('cooperation').value;
+
+      // Base award ranges by program
+      const ranges = {
+        sec:  { min: 0.10, max: 0.30, threshold: 1000000 },
+        cftc: { min: 0.10, max: 0.30, threshold: 1000000 },
+        irs:  { min: 0.15, max: 0.30, threshold: 2000000 },
+        fca:  { min: 0.15, max: 0.30, threshold: 0 },
+      };
+
+      const r = ranges[program];
+      if (sanctions < r.threshold && r.threshold > 0) {
+        document.getElementById('result').innerHTML =
+          '<strong>Below Program Threshold</strong><br>The ' + program.toUpperCase() +
+          ' program requires sanctions of at least $' + r.threshold.toLocaleString() +
+          ' to qualify for an award. Below this threshold, awards are discretionary and typically unavailable.';
+        return;
+      }
+
+      // Adjust within range based on contribution and cooperation
+      const contribAdj = { high: 0.0, medium: -0.05, low: -0.10 };
+      const coopAdj = { full: 0.0, partial: -0.02, limited: -0.05 };
+
+      const effectiveMax = Math.min(r.max, r.max + contribAdj[contribution] + coopAdj[cooperation]);
+      const effectiveMin = Math.max(r.min, r.min + contribAdj[contribution] + coopAdj[cooperation] - 0.05);
+
+      const low = Math.round(sanctions * Math.max(r.min, effectiveMin));
+      const high = Math.round(sanctions * Math.min(r.max, effectiveMax));
+
+      const fmt = n => '$' + n.toLocaleString();
+      const programNames = { sec: 'SEC', cftc: 'CFTC', irs: 'IRS', fca: 'False Claims Act' };
+      document.getElementById('result').innerHTML =
+        '<strong>Estimated Award Range: ' + fmt(low) + ' – ' + fmt(high) + '</strong>' +
+        '<br>Program: ' + programNames[program] +
+        '<br>Total sanctions: ' + fmt(Math.round(sanctions)) +
+        '<br>Applicable award range: ' + Math.round(effectiveMin*100) + '%–' + Math.round(Math.min(r.max,effectiveMax)*100) + '%' +
+        '<br><em>Awards are determined by the agency based on all facts. This is an educational estimate only. Consult a whistleblower attorney before submitting a tip.</em>';
+    });
+  </script>
+</BaseLayout>
