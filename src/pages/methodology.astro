@@ -1,26 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Calculator Methodology | whistleblowerawardcalc.com';
-const description = 'How we estimate whistleblower awards under SEC, CFTC, IRS, and False Claims Act programs.';
+const description = 'How we estimate whistleblower awards under SEC, CFTC, IRS, and False Claims Act programs — statutory ranges, adjustment factors, thresholds, and known limitations.';
 ---
 <BaseLayout title={title} description={description}>
   <h1>Calculator Methodology</h1>
+  <p><em>Reviewed by Bram Whitfield (BW), Editor-in-Chief &mdash; Whistleblower Award Programs Practice. Updated May 2026.</em></p>
 
-  <h2>Award Ranges by Program</h2>
-  <p>We apply the statutory award percentage ranges established by each program:</p>
+  <p>This page documents every formula, statutory reference, and assumption used in the whistleblower award calculator. Understanding the methodology helps you assess how reliable the estimate is for your situation and what variables the calculator cannot model.</p>
+
+  <h2>Step 1: Statutory Award Ranges by Program</h2>
+  <p>Each whistleblower program establishes a mandatory award range as a percentage of sanctions collected. The calculator applies these statutory ranges as its foundation:</p>
   <ul>
-    <li><strong>SEC Whistleblower (Dodd-Frank §21F):</strong> 10%–30% of sanctions exceeding $1 million. Authority: 15 U.S.C. § 78u-6.</li>
-    <li><strong>CFTC Whistleblower (Dodd-Frank §748):</strong> 10%–30% of sanctions exceeding $1 million. Authority: 7 U.S.C. § 26.</li>
-    <li><strong>IRS Whistleblower (IRC §7623(b)):</strong> 15%–30% of collected proceeds where taxes in dispute exceed $2 million (and for individuals, gross income exceeds $200,000). Authority: 26 U.S.C. § 7623.</li>
-    <li><strong>False Claims Act (31 U.S.C. §§ 3729–3733):</strong> 15%–25% if government intervenes; 25%–30% if relator proceeds alone.</li>
+    <li><strong>SEC Whistleblower Program (Dodd-Frank Act &sect;21F):</strong> 10%&ndash;30% of sanctions exceeding $1,000,000. Authority: 15 U.S.C. &sect; 78u-6. Administered by the SEC Office of the Whistleblower. The SEC's award rules are codified at 17 C.F.R. &sect;&sect; 240.21F-1 through 240.21F-17.</li>
+    <li><strong>CFTC Whistleblower Program (Dodd-Frank Act &sect;748):</strong> 10%&ndash;30% of sanctions exceeding $1,000,000. Authority: 7 U.S.C. &sect; 26. Mirrors the SEC's structure and was modeled on it.</li>
+    <li><strong>IRS Whistleblower Program (IRC &sect;7623(b)):</strong> 15%&ndash;30% of collected proceeds in cases where the amount in dispute (taxes, penalties, and interest) exceeds $2,000,000, and for individual taxpayers, gross income exceeds $200,000. Authority: 26 U.S.C. &sect; 7623(b). A different, discretionary track (&sect;7623(a)) applies to smaller cases but is not modeled here.</li>
+    <li><strong>False Claims Act (31 U.S.C. &sect;&sect; 3729&ndash;3733):</strong> 15%&ndash;25% of the government's recovery when the government intervenes in the qui tam suit; 25%&ndash;30% when the government declines and the relator proceeds alone. The calculator uses 15%&ndash;30% as the combined range with no minimum threshold, since the FCA applies to all qualifying cases regardless of dollar amount.</li>
+    <li><strong>FinCEN/AML Whistleblower Program (Anti-Money Laundering Act of 2020):</strong> 10%&ndash;30% of sanctions exceeding $1,000,000. Authority: 31 U.S.C. &sect; 5323. Modeled on the SEC program structure.</li>
   </ul>
 
-  <h2>Award Adjustment Factors</h2>
-  <p>Within the applicable range, we adjust based on: (1) contribution level — original tip quality and whether it was the primary basis for enforcement; (2) cooperation — extent of assistance throughout the investigation. High contribution + full cooperation trends toward the upper end of the range.</p>
+  <h2>Step 2: Threshold Check</h2>
+  <p>The SEC, CFTC, and IRS programs require minimum sanctions or disputed amounts before the mandatory award range applies. The calculator checks these thresholds:</p>
+  <ul>
+    <li>SEC and CFTC: sanctions must exceed $1,000,000 in the related action for the mandatory 10%&ndash;30% range to apply. Below this threshold, awards are entirely discretionary and typically unavailable.</li>
+    <li>IRS: the amount in dispute (taxes plus penalties plus interest) must exceed $2,000,000. Below this threshold, the &sect;7623(a) discretionary track applies, with awards of up to 15% at the agency's discretion.</li>
+    <li>FCA: no minimum threshold. The FCA applies to any fraudulent claim against the federal government regardless of dollar amount, though practically speaking, attorneys pursue cases with meaningful recovery potential.</li>
+  </ul>
 
-  <h2>Threshold Check</h2>
-  <p>SEC and CFTC require minimum sanctions of $1 million. IRS requires $2 million in dispute. Below these thresholds, awards are discretionary or unavailable; we flag this for the user.</p>
+  <h2>Step 3: Adjustment Factors</h2>
+  <p>Within the statutory range, agencies exercise discretion based on factors that increase or decrease the award percentage. The calculator models these adjustments based on the contribution and cooperation inputs:</p>
+  <p><strong>Contribution level:</strong> High contribution (original, specific, credible tip that was the primary basis for enforcement) trends toward the upper end of the range. Medium contribution (significant but partial) reduces the estimate by approximately 5 percentage points. Low contribution (helpful but not primary basis) reduces it by approximately 10 percentage points.</p>
+  <p><strong>Cooperation level:</strong> Full cooperation throughout the investigation (providing documents, participating in interviews, assisting enforcement) trends toward the upper bound. Partial cooperation reduces the estimate by approximately 2 percentage points. Limited cooperation (minimal beyond the initial tip) reduces it by approximately 5 percentage points.</p>
+  <p>These adjustments reflect the factors the agencies themselves have identified as award-enhancing or award-reducing in their published rules and award orders. SEC factors are codified at 17 C.F.R. &sect; 240.21F-6; IRS factors are described in IRS Notice 2008-4 and updated IRS publications.</p>
 
-  <h2>Limitations</h2>
-  <p>We do not model: reductions for unreasonable delay, interference with compliance programs, prior criminal convictions, or agency-specific enhancement/reduction factors. Actual award determinations involve extensive factual analysis by the agency.</p>
+  <h2>Known Limitations</h2>
+  <ul>
+    <li><strong>Award priority and competing claimants:</strong> When multiple whistleblowers report the same violation, the agency typically makes a single award per enforcement action and allocates it among claimants based on their relative contributions. The calculator models a single claimant and cannot estimate the dilution effect of competing claims.</li>
+    <li><strong>Reduction factors not modeled:</strong> Awards can be reduced for: unreasonable delay in reporting; interference with internal compliance programs; prior criminal convictions related to the conduct reported; and culpability in the violation itself. The calculator does not apply these reductions.</li>
+    <li><strong>IRS discretion:</strong> IRS awards are subject to greater agency discretion than SEC/CFTC awards, and the IRS Whistleblower Office has historically exercised that discretion to award lower percentages than the statutory range might suggest. The calculator applies the statutory range.</li>
+    <li><strong>Collection risk:</strong> IRS awards are paid only on "collected proceeds" — if the IRS assesses taxes but cannot collect them, no award is paid. SEC and CFTC awards are paid from sanctions collected, not ordered. The calculator uses the full sanctions amount without a collection discount.</li>
+    <li><strong>Related actions:</strong> SEC and CFTC awards can include a percentage of sanctions in "related actions" by other agencies (DOJ, state regulators). The calculator uses only the primary enforcement action sanctions.</li>
+    <li><strong>FCA intervention decision:</strong> The government's decision to intervene or decline significantly affects both the award percentage and the likelihood of recovery. The calculator cannot predict intervention probability.</li>
+  </ul>
+
+  <p>Return to the <a href="/">calculator</a>, or see the <a href="/guides/how-whistleblower-awards-work">how awards work guide</a> for further context on each program.</p>
 </BaseLayout>

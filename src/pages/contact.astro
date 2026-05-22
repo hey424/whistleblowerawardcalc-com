@@ -1,10 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const title = 'Contact';
-const description = 'Contact the editorial team.';
+const title = 'Contact | whistleblowerawardcalc.com';
+const description = 'Contact the editorial team at whistleblowerawardcalc.com with corrections, feedback, or questions.';
 ---
 <BaseLayout title={title} description={description}>
   <h1>Contact</h1>
-  <p>For corrections, feedback, or questions, email <a href="mailto:hey@theclicklab.agency">hey@theclicklab.agency</a>.</p>
-  <p>We read every message but can&rsquo;t provide legal advice or respond to requests for case-specific analysis.</p>
+  <p>For corrections, feedback, or questions about our content, email <a href="mailto:hey@theclicklab.agency">hey@theclicklab.agency</a>.</p>
+
+  <h2>What We Can Help With</h2>
+  <ul>
+    <li><strong>Corrections:</strong> If you find a factual error — wrong award percentage, outdated threshold, incorrect statutory citation — let us know with a description and a citation to the correct authority.</li>
+    <li><strong>Feedback:</strong> Suggestions for guides, calculator improvements, or topics we haven't covered.</li>
+    <li><strong>Media:</strong> Reporters or researchers referencing our content are welcome to reach out.</li>
+  </ul>
+
+  <h2>What We Can't Help With</h2>
+  <p>We cannot provide legal advice or guidance about specific potential whistleblower cases. Whistleblower decisions involve significant legal and personal risk. For case-specific guidance, consult a qualified whistleblower attorney — most offer free, confidential initial consultations.</p>
+
+  <p>Typical response time: 2–5 business days.</p>
 </BaseLayout>

@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Whistleblower Award Calculator | whistleblowerawardcalc.com';
-const description = 'Estimate your potential SEC, IRS, CFTC, or False Claims Act whistleblower award based on reported violations.';
+const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act whistleblower award based on reported violations, sanctions, and your contribution level. Free, educational.';
 ---
 <BaseLayout title={title} description={description}>
   <h1>Whistleblower Award Calculator</h1>
-  <p>Estimate your potential whistleblower award based on the program, sanctions collected, and contribution level. Actual awards are determined by the agency — this is an educational estimate.</p>
+  <p><em>Reviewed by Bram Whitfield (BW), Editor-in-Chief &mdash; Whistleblower Award Programs Practice. Updated May 2026.</em></p>
+  <p>Federal whistleblower programs pay significant awards — 10% to 30% of sanctions collected — to individuals who provide original information leading to successful enforcement actions. The SEC, CFTC, IRS, and False Claims Act programs each cover a different category of fraud, with different thresholds, different award ranges, and different anti-retaliation protections. This calculator estimates your potential award based on the applicable program, the total sanctions involved, and the quality of your contribution. Actual awards are determined by the agency — consult a whistleblower attorney before submitting any tip.</p>
+
+  <h2>Run the Estimate</h2>
   <form id="calc">
     <label for="program">Whistleblower Program</label>
     <select id="program">
@@ -37,13 +40,33 @@ const description = 'Estimate your potential SEC, IRS, CFTC, or False Claims Act
   </form>
   <div id="result"></div>
 
-  <h2>How Whistleblower Awards Work</h2>
-  <p>Federal whistleblower programs incentivize insiders to report fraud by paying a percentage of sanctions collected. Programs include:</p>
+  <h2>How Whistleblower Awards Are Calculated</h2>
+  <p>Federal whistleblower programs use a percentage-of-sanctions model: the agency determines what percentage of the total enforcement recovery to award the whistleblower, based on both the statutory range and the specific factors relevant to the whistleblower's contribution. Understanding both the statutory framework and the discretionary factors helps you assess where in the range your situation might fall.</p>
+
+  <h3>The Statutory Ranges</h3>
+  <p>Each program defines a mandatory range:</p>
   <ul>
-    <li><strong>SEC:</strong> 10%–30% of sanctions over $1 million</li>
-    <li><strong>CFTC:</strong> 10%–30% of sanctions over $1 million</li>
-    <li><strong>IRS:</strong> 15%–30% of collected proceeds for cases involving $2M+ in dispute</li>
-    <li><strong>False Claims Act:</strong> 15%–30% (if government intervenes) or 25%–30% (if relator proceeds alone)</li>
+    <li><strong>SEC (15 U.S.C. &sect; 78u-6):</strong> 10%&ndash;30% of sanctions exceeding $1 million. The SEC cannot award below 10% or above 30% of collected sanctions in the covered action and related actions, absent extraordinary circumstances.</li>
+    <li><strong>CFTC (7 U.S.C. &sect; 26):</strong> 10%&ndash;30% of sanctions exceeding $1 million. Mirrors the SEC structure.</li>
+    <li><strong>IRS (26 U.S.C. &sect; 7623(b)):</strong> 15%&ndash;30% of collected proceeds where the amount in dispute exceeds $2 million. The IRS Whistleblower Office makes award recommendations that are subject to review.</li>
+    <li><strong>False Claims Act (31 U.S.C. &sect; 3730(d)):</strong> 15%&ndash;25% if the government intervenes; 25%&ndash;30% if the relator proceeds alone. The FCA has no minimum sanctions threshold.</li>
+  </ul>
+
+  <h3>Factors That Affect the Award Percentage</h3>
+  <p>Within the statutory range, agencies exercise discretion based on the quality of the whistleblower's contribution. Award-enhancing factors include: the significance and specificity of the original information; whether the tip prompted an investigation that would not otherwise have occurred; the whistleblower's degree of cooperation and assistance to enforcement staff; and whether the whistleblower reported promptly rather than delaying. Award-reducing factors include: unreasonable delay; interference with internal compliance programs; prior criminal convictions related to the reported conduct; and culpability in the violation itself.</p>
+
+  <h3>What the Awards Actually Look Like</h3>
+  <p>The largest individual SEC whistleblower awards have exceeded $100 million and $200 million for single whistleblowers. The program has paid over $2 billion total since 2012. The largest IRS whistleblower award — $104 million to Bradley Birkenfeld for UBS offshore tax evasion information — demonstrates the scale possible when the underlying fraud is enormous. False Claims Act qui tam suits have produced relator awards ranging from the low hundreds of thousands to over $100 million in major healthcare fraud cases. The common thread: the larger the underlying fraud, the larger the potential award, because awards are a percentage of what the government actually recovers.</p>
+
+  <h2>Learn More</h2>
+  <ul>
+    <li><a href="/guides/how-whistleblower-awards-work">How whistleblower awards work</a></li>
+    <li><a href="/guides/sec-whistleblower-program">The SEC Whistleblower Program</a></li>
+    <li><a href="/guides/false-claims-act-qui-tam">False Claims Act qui tam suits</a></li>
+    <li><a href="/guides/whistleblower-misconceptions">Common misconceptions</a></li>
+    <li><a href="/case-types">Types of whistleblower cases</a></li>
+    <li><a href="/methodology">Calculator methodology</a></li>
+    <li><a href="/faq">Frequently asked questions</a></li>
   </ul>
 
   <script>
@@ -84,10 +107,10 @@ const description = 'Estimate your potential SEC, IRS, CFTC, or False Claims Act
       const fmt = n => '$' + n.toLocaleString();
       const programNames = { sec: 'SEC', cftc: 'CFTC', irs: 'IRS', fca: 'False Claims Act' };
       document.getElementById('result').innerHTML =
-        '<strong>Estimated Award Range: ' + fmt(low) + ' – ' + fmt(high) + '</strong>' +
+        '<strong>Estimated Award Range: ' + fmt(low) + ' &ndash; ' + fmt(high) + '</strong>' +
         '<br>Program: ' + programNames[program] +
         '<br>Total sanctions: ' + fmt(Math.round(sanctions)) +
-        '<br>Applicable award range: ' + Math.round(effectiveMin*100) + '%–' + Math.round(Math.min(r.max,effectiveMax)*100) + '%' +
+        '<br>Applicable award range: ' + Math.round(effectiveMin*100) + '%&ndash;' + Math.round(Math.min(r.max,effectiveMax)*100) + '%' +
         '<br><em>Awards are determined by the agency based on all facts. This is an educational estimate only. Consult a whistleblower attorney before submitting a tip.</em>';
     });
   </script>
