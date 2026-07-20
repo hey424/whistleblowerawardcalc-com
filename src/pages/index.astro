@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadCapture from '../components/LeadCapture.astro';
 const title = 'Whistleblower Award Calculator | whistleblowerawardcalc.com';
 const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act whistleblower award based on reported violations, sanctions, and your contribution level. Free, educational.';
 ---
@@ -40,7 +41,10 @@ const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act
   </form>
   <div id="result"></div>
 
-  <h2>How Whistleblower Awards Are Calculated</h2>
+  
+
+  <LeadCapture caseType="whistleblower" caseTypeLabel="Whistleblower" />
+<h2>How Whistleblower Awards Are Calculated</h2>
   <p>Federal whistleblower programs use a percentage-of-sanctions model: the agency determines what percentage of the total enforcement recovery to award the whistleblower, based on both the statutory range and the specific factors relevant to the whistleblower's contribution. Understanding both the statutory framework and the discretionary factors helps you assess where in the range your situation might fall.</p>
 
   <h3>The Statutory Ranges</h3>
@@ -60,13 +64,13 @@ const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act
 
   <h2>Learn More</h2>
   <ul>
-    <li><a href="/guides/how-whistleblower-awards-work">How whistleblower awards work</a></li>
-    <li><a href="/guides/sec-whistleblower-program">The SEC Whistleblower Program</a></li>
-    <li><a href="/guides/false-claims-act-qui-tam">False Claims Act qui tam suits</a></li>
-    <li><a href="/guides/whistleblower-misconceptions">Common misconceptions</a></li>
-    <li><a href="/case-types">Types of whistleblower cases</a></li>
-    <li><a href="/methodology">Calculator methodology</a></li>
-    <li><a href="/faq">Frequently asked questions</a></li>
+    <li><a href="/guides/how-whistleblower-awards-work/">How whistleblower awards work</a></li>
+    <li><a href="/guides/sec-whistleblower-program/">The SEC Whistleblower Program</a></li>
+    <li><a href="/guides/false-claims-act-qui-tam/">False Claims Act qui tam suits</a></li>
+    <li><a href="/guides/whistleblower-misconceptions/">Common misconceptions</a></li>
+    <li><a href="/case-types/">Types of whistleblower cases</a></li>
+    <li><a href="/methodology/">Calculator methodology</a></li>
+    <li><a href="/faq/">Frequently asked questions</a></li>
   </ul>
 
   <script>
