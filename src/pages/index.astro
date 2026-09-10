@@ -2,12 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LeadCapture from '../components/LeadCapture.astro';
 const title = 'Whistleblower Award Calculator | whistleblowerawardcalc.com';
-const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act whistleblower award based on reported violations, sanctions, and your contribution level. Free, educational.';
+const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act whistleblower award from the sanctions collected, the program threshold, and your contribution. Free, with worked examples and a program comparison table.';
 ---
 <BaseLayout title={title} description={description}>
   <h1>Whistleblower Award Calculator</h1>
-  <p><em>Reviewed by our editorial team. Updated May 2026.</em></p>
-  <p>Federal whistleblower programs pay significant awards — 10% to 30% of sanctions collected — to individuals who provide original information leading to successful enforcement actions. The SEC, CFTC, IRS, and False Claims Act programs each cover a different category of fraud, with different thresholds, different award ranges, and different anti-retaliation protections. This calculator estimates your potential award based on the applicable program, the total sanctions involved, and the quality of your contribution. Actual awards are determined by the agency — consult a whistleblower attorney before submitting any tip.</p>
+  <p><em>Published by The Click Lab Agency LLC. Last reviewed September 2026. Not legal advice.</em></p>
+
+  <p>Federal whistleblower awards are a percentage of what the government actually collects, not of what the fraud was worth, and the percentage band depends on which program you are in. The SEC and CFTC pay 10&ndash;30% of monetary sanctions once an action crosses $1 million. The IRS pays 15&ndash;30% of collected proceeds once the amount in dispute exceeds $2 million; below that, awards are discretionary and capped. Under the False Claims Act, a qui tam relator receives 15&ndash;25% of the recovery if the Department of Justice intervenes and 25&ndash;30% if it declines and the relator litigates alone. This calculator asks which program applies, what the government is likely to collect, and where inside the band your facts fall.</p>
+  <p>Two cautions before you start. Most tips never produce an award, because most never lead to an enforcement action; the estimate assumes the case succeeds. And the amount that matters is the amount <em>collected</em>: a $40 million judgment against an insolvent defendant is worth nothing to the whistleblower.</p>
 
   <h2>Run the Estimate</h2>
   <form id="calc">
@@ -16,51 +18,84 @@ const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act
       <option value="sec" selected>SEC Whistleblower Program (securities fraud)</option>
       <option value="cftc">CFTC Whistleblower Program (commodity/derivatives fraud)</option>
       <option value="irs">IRS Whistleblower Program (tax fraud)</option>
-      <option value="fca">False Claims Act (qui tam — government contractor fraud)</option>
+      <option value="fca">False Claims Act (qui tam &mdash; fraud against the government)</option>
     </select>
 
-    <label for="sanctions">Estimated Total Sanctions / Recoveries ($)</label>
+    <label for="sanctions">Sanctions or recovery the government is likely to collect ($)</label>
     <input type="number" id="sanctions" min="0" value="5000000" required />
-    <p style="font-size:.875rem;color:#555;margin-top:-.5rem">For SEC/CFTC: total fines, disgorgement, and penalties ordered. For IRS: total unpaid taxes, penalties, and interest. For FCA: total government recovery.</p>
+    <p style="font-size:.875rem;color:#555;margin-top:-.5rem">SEC/CFTC: fines, disgorgement, and penalties <em>collected</em>. IRS: taxes, penalties, and interest <em>collected</em>. FCA: the government&rsquo;s total recovery after trebling and settlement.</p>
+
+    <div id="fca_wrap" style="display:none">
+      <label for="intervention">Did the Department of Justice intervene?</label>
+      <select id="intervention">
+        <option value="yes" selected>Yes &mdash; DOJ took over the case (15&ndash;25%)</option>
+        <option value="no">No &mdash; relator litigated alone (25&ndash;30%)</option>
+      </select>
+    </div>
 
     <label for="contribution">Contribution Level</label>
     <select id="contribution">
-      <option value="high" selected>High — original, specific, credible tip that drove the case</option>
-      <option value="medium">Medium — significant but partial contribution</option>
-      <option value="low">Low — helpful but not primary basis for enforcement</option>
+      <option value="high" selected>High &mdash; original, specific, credible tip that drove the case</option>
+      <option value="medium">Medium &mdash; significant but partial contribution</option>
+      <option value="low">Low &mdash; helpful but not the primary basis for enforcement</option>
     </select>
 
     <label for="cooperation">Cooperation Level</label>
     <select id="cooperation">
-      <option value="full" selected>Full — provided extensive assistance throughout</option>
-      <option value="partial">Partial — some assistance provided</option>
-      <option value="limited">Limited — minimal interaction beyond initial tip</option>
+      <option value="full" selected>Full &mdash; provided extensive assistance throughout</option>
+      <option value="partial">Partial &mdash; some assistance provided</option>
+      <option value="limited">Limited &mdash; minimal interaction beyond the initial tip</option>
     </select>
 
     <button type="submit">Estimate Award</button>
   </form>
   <div id="result"></div>
 
-  
+  <h2>Worked examples</h2>
+  <p>These use the calculator&rsquo;s own bands so you can check the tool against a case that resembles yours.</p>
 
-  <LeadCapture caseType="whistleblower" caseTypeLabel="Whistleblower" />
-<h2>How Whistleblower Awards Are Calculated</h2>
-  <p>Federal whistleblower programs use a percentage-of-sanctions model: the agency determines what percentage of the total enforcement recovery to award the whistleblower, based on both the statutory range and the specific factors relevant to the whistleblower's contribution. Understanding both the statutory framework and the discretionary factors helps you assess where in the range your situation might fall.</p>
+  <h3>Example 1 &mdash; SEC, mid-band, partial collection</h3>
+  <p>A compliance analyst reports an accounting fraud with specific ledger entries. The SEC obtains $40 million in sanctions, but the company pays $12 million before entering bankruptcy. The award is a percentage of the $12 million collected, not the $40 million ordered. The tip was original and submitted before any investigation, and the analyst cooperated fully, but waited 18 months after learning of the fraud to report. Rule 21F-6 treats unreasonable delay as a downward factor. Estimated placement: about 20%. Award: roughly $2.4 million, paid from the Investor Protection Fund after the final order and any appeals.</p>
+
+  <h3>Example 2 &mdash; IRS, below the mandatory threshold</h3>
+  <p>A bookkeeper reports a business owner underreporting $1.4 million in income. The amount in dispute (tax, penalties, and interest) comes to about $700,000, under the $2 million threshold for the mandatory 15&ndash;30% program in IRC &sect;7623(b). The claim falls under the discretionary &sect;7623(a) program: an award of up to 15%, capped at $10 million, that the IRS may decline to pay at all. Realistic range: $0 to about $105,000, and only after the IRS collects, which routinely takes five years or more.</p>
+
+  <h3>Example 3 &mdash; False Claims Act, DOJ declines to intervene</h3>
+  <p>A billing manager files a sealed qui tam complaint alleging $6 million in Medicare overbilling. After investigating, DOJ declines to intervene. The relator&rsquo;s counsel litigates and, with trebling and per-claim penalties on the table, the defendant settles for $9 million. Because the government declined, the relator&rsquo;s share is 25&ndash;30% of $9 million: $2.25&ndash;$2.7 million before the contingency fee, which in declined cases typically runs 30&ndash;40% of the relator&rsquo;s share. Had DOJ intervened and obtained the same $9 million, the share would have been 15&ndash;25%, but the relator would have borne far less cost and risk.</p>
+
+  <h2>Program comparison</h2>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>Program</th><th>Threshold</th><th>Award band</th><th>Anonymous filing</th><th>Typical time to award</th></tr></thead>
+    <tbody>
+      <tr><td>SEC (Exchange Act &sect;21F)</td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions, including related actions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
+      <tr><td>CFTC (Commodity Exchange Act &sect;23)</td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
+      <tr><td>IRS &sect;7623(b)</td><td>Over $2 million in dispute (and gross income over $200,000 if the taxpayer is an individual)</td><td>15&ndash;30% of collected proceeds</td><td>No; identity protected but not anonymous</td><td>5&ndash;10 years</td></tr>
+      <tr><td>IRS &sect;7623(a)</td><td>Below the (b) thresholds</td><td>Up to 15%, capped at $10 million, discretionary</td><td>No</td><td>Varies</td></tr>
+      <tr><td>False Claims Act qui tam (31 U.S.C. &sect;3730)</td><td>None</td><td>15&ndash;25% if DOJ intervenes; 25&ndash;30% if it declines</td><td>Complaint filed under seal; identity disclosed when unsealed</td><td>2&ndash;6 years</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>How Whistleblower Awards Are Calculated</h2>
+  <p>Federal whistleblower programs use a percentage-of-sanctions model: the agency determines what percentage of the total enforcement recovery to award, based on both the statutory range and the factors relevant to the whistleblower&rsquo;s contribution. Understanding both the statutory framework and the discretionary factors helps you assess where in the range your situation might fall.</p>
 
   <h3>The Statutory Ranges</h3>
-  <p>Each program defines a mandatory range:</p>
   <ul>
-    <li><strong>SEC (15 U.S.C. &sect; 78u-6):</strong> 10%&ndash;30% of sanctions exceeding $1 million. The SEC cannot award below 10% or above 30% of collected sanctions in the covered action and related actions, absent extraordinary circumstances.</li>
-    <li><strong>CFTC (7 U.S.C. &sect; 26):</strong> 10%&ndash;30% of sanctions exceeding $1 million. Mirrors the SEC structure.</li>
-    <li><strong>IRS (26 U.S.C. &sect; 7623(b)):</strong> 15%&ndash;30% of collected proceeds where the amount in dispute exceeds $2 million. The IRS Whistleblower Office makes award recommendations that are subject to review.</li>
-    <li><strong>False Claims Act (31 U.S.C. &sect; 3730(d)):</strong> 15%&ndash;25% if the government intervenes; 25%&ndash;30% if the relator proceeds alone. The FCA has no minimum sanctions threshold.</li>
+    <li><strong>SEC (15 U.S.C. &sect;78u-6):</strong> 10&ndash;30% of monetary sanctions exceeding $1 million in the covered action and related actions.</li>
+    <li><strong>CFTC (7 U.S.C. &sect;26):</strong> 10&ndash;30% of sanctions exceeding $1 million. Mirrors the SEC structure.</li>
+    <li><strong>IRS (26 U.S.C. &sect;7623(b)):</strong> 15&ndash;30% of collected proceeds where the amount in dispute exceeds $2 million. Reduced to a maximum of 10% where the information came primarily from public sources.</li>
+    <li><strong>False Claims Act (31 U.S.C. &sect;3730(d)):</strong> 15&ndash;25% if the government intervenes; 25&ndash;30% if the relator proceeds alone. No minimum threshold.</li>
   </ul>
 
   <h3>Factors That Affect the Award Percentage</h3>
-  <p>Within the statutory range, agencies exercise discretion based on the quality of the whistleblower's contribution. Award-enhancing factors include: the significance and specificity of the original information; whether the tip prompted an investigation that would not otherwise have occurred; the whistleblower's degree of cooperation and assistance to enforcement staff; and whether the whistleblower reported promptly rather than delaying. Award-reducing factors include: unreasonable delay; interference with internal compliance programs; prior criminal convictions related to the reported conduct; and culpability in the violation itself.</p>
+  <p>Within the statutory range, agencies exercise discretion. Under SEC Rule 21F-6, factors that raise an award include the significance and specificity of the information, the assistance provided, the law-enforcement interest in the case, and participation in internal compliance systems. Factors that lower it include culpability in the violation, unreasonable delay in reporting, and interference with internal compliance. The IRS applies a similar list under its regulations at 26 C.F.R. &sect;301.7623-4, and DOJ has published its own relator-share guidelines for FCA cases.</p>
 
   <h3>What the Awards Actually Look Like</h3>
-  <p>The largest individual SEC whistleblower awards have exceeded $100 million and $200 million for single whistleblowers. The program has paid over $2 billion total since 2012. The largest IRS whistleblower award — $104 million to Bradley Birkenfeld for UBS offshore tax evasion information — demonstrates the scale possible when the underlying fraud is enormous. False Claims Act qui tam suits have produced relator awards ranging from the low hundreds of thousands to over $100 million in major healthcare fraud cases. The common thread: the larger the underlying fraud, the larger the potential award, because awards are a percentage of what the government actually recovers.</p>
+  <p>The SEC program has paid more than $2 billion in total since 2012, with several individual awards above $100 million. The largest IRS award on record is the $104 million paid to Bradley Birkenfeld for information about offshore tax evasion facilitated by UBS. False Claims Act relator shares run from the tens of thousands to well over $100 million in major healthcare fraud cases. The common thread is that awards scale with what the government actually collects, and most successful cases are far smaller than the headline examples.</p>
+
+  <h2>What this calculator does not do</h2>
+  <p>It does not predict whether the government will act on a tip, which is the single biggest determinant of whether any award is paid. It does not model award reductions for a whistleblower&rsquo;s own culpability, the allocation of one award among several whistleblowers on the same matter, related-action sanctions collected by other agencies, state false claims acts, the FCA&rsquo;s first-to-file and public-disclosure bars, or the separate anti-retaliation damages available under Sarbanes-Oxley, Dodd-Frank, and the FCA. Treat the output as an order-of-magnitude estimate for a case that succeeds.</p>
 
   <h2>Learn More</h2>
   <ul>
@@ -73,49 +108,56 @@ const description = 'Estimate your potential SEC, CFTC, IRS, or False Claims Act
     <li><a href="/faq/">Frequently asked questions</a></li>
   </ul>
 
+  <h2>Where to get help</h2>
+  <p>SEC and CFTC tips can be filed directly on each agency&rsquo;s online Tip, Complaint, or Referral portal at no cost, and the IRS accepts Form 211 by mail. Anonymous SEC or CFTC filing requires an attorney, and a False Claims Act case cannot be filed without one, because a qui tam complaint is a federal lawsuit brought in the government&rsquo;s name. Whistleblower attorneys work on contingency and most offer a confidential initial consultation; the National Whistleblower Center and your state bar&rsquo;s referral service are neutral starting points. If you would like The Click Lab to pass your details to an attorney in its network, the optional form below does that; it is a disclosed referral product, and our <a href="/privacy/">privacy policy</a> explains what is shared. Do not include the substance of your allegations in that form.</p>
+
+  <LeadCapture caseType="whistleblower" caseTypeLabel="Whistleblower" />
+
   <script>
+    const programEl = document.getElementById('program');
+    const fcaWrap = document.getElementById('fca_wrap');
+    function toggleFca(){ fcaWrap.style.display = programEl.value === 'fca' ? 'block' : 'none'; }
+    programEl.addEventListener('change', toggleFca); toggleFca();
+
     document.getElementById('calc').addEventListener('submit', function(e) {
       e.preventDefault();
-      const program = document.getElementById('program').value;
+      const program = programEl.value;
       const sanctions = parseFloat(document.getElementById('sanctions').value) || 0;
       const contribution = document.getElementById('contribution').value;
       const cooperation = document.getElementById('cooperation').value;
+      const intervened = document.getElementById('intervention').value === 'yes';
+      const out = document.getElementById('result');
+      const fmt = n => '$' + Math.round(n).toLocaleString();
 
-      // Base award ranges by program
-      const ranges = {
-        sec:  { min: 0.10, max: 0.30, threshold: 1000000 },
-        cftc: { min: 0.10, max: 0.30, threshold: 1000000 },
-        irs:  { min: 0.15, max: 0.30, threshold: 2000000 },
-        fca:  { min: 0.15, max: 0.30, threshold: 0 },
-      };
+      let r;
+      if (program === 'sec' || program === 'cftc') r = { min: 0.10, max: 0.30, threshold: 1000000 };
+      else if (program === 'irs') r = { min: 0.15, max: 0.30, threshold: 2000000 };
+      else r = intervened ? { min: 0.15, max: 0.25, threshold: 0 } : { min: 0.25, max: 0.30, threshold: 0 };
 
-      const r = ranges[program];
-      if (sanctions < r.threshold && r.threshold > 0) {
-        document.getElementById('result').innerHTML =
-          '<strong>Below Program Threshold</strong><br>The ' + program.toUpperCase() +
-          ' program requires sanctions of at least $' + r.threshold.toLocaleString() +
-          ' to qualify for an award. Below this threshold, awards are discretionary and typically unavailable.';
+      if (program === 'irs' && sanctions < r.threshold) {
+        const cap = Math.min(sanctions * 0.15, 10000000);
+        out.innerHTML = '<strong>Below the mandatory-award threshold</strong><br>Amounts in dispute under $2,000,000 fall under IRC &sect;7623(a): a discretionary award of up to 15% (here, up to ' + fmt(cap) + '), capped at $10 million, which the IRS may decline to pay. Range: $0 &ndash; ' + fmt(cap) + '.<br><em>Educational estimate only. Consult a whistleblower attorney.</em>';
+        return;
+      }
+      if (sanctions < r.threshold) {
+        out.innerHTML = '<strong>Below program threshold</strong><br>The ' + program.toUpperCase() + ' program pays awards only when monetary sanctions exceed ' + fmt(r.threshold) + ' in the action and related actions. Below that, no award is available.<br><em>Educational estimate only.</em>';
         return;
       }
 
-      // Adjust within range based on contribution and cooperation
       const contribAdj = { high: 0.0, medium: -0.05, low: -0.10 };
       const coopAdj = { full: 0.0, partial: -0.02, limited: -0.05 };
+      const adj = contribAdj[contribution] + coopAdj[cooperation];
+      const effMax = Math.max(r.min, r.max + adj);
+      const effMin = Math.max(r.min, Math.min(effMax, r.min + adj + 0.05 * (contribution === 'high' ? 1 : 0)));
 
-      const effectiveMax = Math.min(r.max, r.max + contribAdj[contribution] + coopAdj[cooperation]);
-      const effectiveMin = Math.max(r.min, r.min + contribAdj[contribution] + coopAdj[cooperation] - 0.05);
-
-      const low = Math.round(sanctions * Math.max(r.min, effectiveMin));
-      const high = Math.round(sanctions * Math.min(r.max, effectiveMax));
-
-      const fmt = n => '$' + n.toLocaleString();
-      const programNames = { sec: 'SEC', cftc: 'CFTC', irs: 'IRS', fca: 'False Claims Act' };
-      document.getElementById('result').innerHTML =
+      const low = sanctions * effMin, high = sanctions * effMax;
+      const programNames = { sec: 'SEC', cftc: 'CFTC', irs: 'IRS', fca: intervened ? 'False Claims Act (intervened)' : 'False Claims Act (declined)' };
+      out.innerHTML =
         '<strong>Estimated Award Range: ' + fmt(low) + ' &ndash; ' + fmt(high) + '</strong>' +
         '<br>Program: ' + programNames[program] +
-        '<br>Total sanctions: ' + fmt(Math.round(sanctions)) +
-        '<br>Applicable award range: ' + Math.round(effectiveMin*100) + '%&ndash;' + Math.round(Math.min(r.max,effectiveMax)*100) + '%' +
-        '<br><em>Awards are determined by the agency based on all facts. This is an educational estimate only. Consult a whistleblower attorney before submitting a tip.</em>';
+        '<br>Amount collected: ' + fmt(sanctions) +
+        '<br>Applicable award band: ' + Math.round(effMin*100) + '%&ndash;' + Math.round(effMax*100) + '%' +
+        '<br><em>Awards are set by the agency or court on all the facts and paid only on amounts actually collected. Educational estimate only; consult a whistleblower attorney before submitting a tip.</em>';
     });
   </script>
 </BaseLayout>
