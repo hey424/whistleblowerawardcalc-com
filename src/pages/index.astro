@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LeadCapture from '../components/LeadCapture.astro';
 const title = 'Whistleblower Award Calculator | whistleblowerawardcalc.com';
 const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act whistleblower award from the sanctions collected, the program threshold, and your contribution. Free, with worked examples and a program comparison table.';
 ---
@@ -8,7 +7,7 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
   <h1>Whistleblower Award Calculator</h1>
   <p><em>Published by The Click Lab Agency LLC. Last reviewed September 2026. Not legal advice.</em></p>
 
-  <p>Federal whistleblower awards are a percentage of what the government actually collects, not of what the fraud was worth, and the percentage band depends on which program you are in. The SEC and CFTC pay 10&ndash;30% of monetary sanctions once an action crosses $1 million. The IRS pays 15&ndash;30% of collected proceeds once the amount in dispute exceeds $2 million; below that, awards are discretionary and capped. Under the False Claims Act, a qui tam relator receives 15&ndash;25% of the recovery if the Department of Justice intervenes and 25&ndash;30% if it declines and the relator litigates alone. This calculator asks which program applies, what the government is likely to collect, and where inside the band your facts fall.</p>
+  <p>Federal whistleblower awards are a percentage of what the government actually collects, not of what the fraud was worth, and the percentage band depends on which program you are in. The <a href="https://www.sec.gov/whistleblower" target="_blank" rel="noopener">SEC</a> and the <a href="https://www.whistleblower.gov/overview" target="_blank" rel="noopener">CFTC</a> pay 10&ndash;30% of monetary sanctions once an action crosses $1 million. The <a href="https://www.irs.gov/compliance/whistleblower-office" target="_blank" rel="noopener">IRS</a> pays 15&ndash;30% of collected proceeds once the amount in dispute exceeds $2 million; below that, awards are discretionary and capped. Under the <a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">False Claims Act</a>, a qui tam relator receives 15&ndash;25% of the recovery if the <a href="https://www.justice.gov/civil/false-claims-act" target="_blank" rel="noopener">Department of Justice</a> intervenes and 25&ndash;30% if it declines and the relator litigates alone. This calculator asks which program applies, what the government is likely to collect, and where inside the band your facts fall.</p>
   <p>Two cautions before you start. Most tips never produce an award, because most never lead to an enforcement action; the estimate assumes the case succeeds. And the amount that matters is the amount <em>collected</em>: a $40 million judgment against an insolvent defendant is worth nothing to the whistleblower.</p>
 
   <h2>Run the Estimate</h2>
@@ -55,10 +54,10 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
   <p>These use the calculator&rsquo;s own bands so you can check the tool against a case that resembles yours.</p>
 
   <h3>Example 1 &mdash; SEC, mid-band, partial collection</h3>
-  <p>A compliance analyst reports an accounting fraud with specific ledger entries. The SEC obtains $40 million in sanctions, but the company pays $12 million before entering bankruptcy. The award is a percentage of the $12 million collected, not the $40 million ordered. The tip was original and submitted before any investigation, and the analyst cooperated fully, but waited 18 months after learning of the fraud to report. Rule 21F-6 treats unreasonable delay as a downward factor. Estimated placement: about 20%. Award: roughly $2.4 million, paid from the Investor Protection Fund after the final order and any appeals.</p>
+  <p>A compliance analyst reports an accounting fraud with specific ledger entries. The SEC obtains $40 million in sanctions, but the company pays $12 million before entering bankruptcy. The award is a percentage of the $12 million collected, not the $40 million ordered. The tip was original and submitted before any investigation, and the analyst cooperated fully, but waited 18 months after learning of the fraud to report. <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-6" target="_blank" rel="noopener">Rule 21F-6</a> treats unreasonable delay as a downward factor. Estimated placement: about 20%. Award: roughly $2.4 million, paid from the Investor Protection Fund after the final order and any appeals.</p>
 
   <h3>Example 2 &mdash; IRS, below the mandatory threshold</h3>
-  <p>A bookkeeper reports a business owner underreporting $1.4 million in income. The amount in dispute (tax, penalties, and interest) comes to about $700,000, under the $2 million threshold for the mandatory 15&ndash;30% program in IRC &sect;7623(b). The claim falls under the discretionary &sect;7623(a) program: an award of up to 15%, capped at $10 million, that the IRS may decline to pay at all. Realistic range: $0 to about $105,000, and only after the IRS collects, which routinely takes five years or more.</p>
+  <p>A bookkeeper reports a business owner underreporting $1.4 million in income. The amount in dispute (tax, penalties, and interest) comes to about $700,000, under the $2 million threshold for the mandatory 15&ndash;30% program in <a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">IRC &sect;7623(b)</a>. The claim falls under the discretionary &sect;7623(a) program: an award of up to 15%, capped at $10 million, that the IRS may decline to pay at all. Realistic range: $0 to about $105,000, and only after the IRS collects, which routinely takes five years or more.</p>
 
   <h3>Example 3 &mdash; False Claims Act, DOJ declines to intervene</h3>
   <p>A billing manager files a sealed qui tam complaint alleging $6 million in Medicare overbilling. After investigating, DOJ declines to intervene. The relator&rsquo;s counsel litigates and, with trebling and per-claim penalties on the table, the defendant settles for $9 million. Because the government declined, the relator&rsquo;s share is 25&ndash;30% of $9 million: $2.25&ndash;$2.7 million before the contingency fee, which in declined cases typically runs 30&ndash;40% of the relator&rsquo;s share. Had DOJ intervened and obtained the same $9 million, the share would have been 15&ndash;25%, but the relator would have borne far less cost and risk.</p>
@@ -68,11 +67,11 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
   <table>
     <thead><tr><th>Program</th><th>Threshold</th><th>Award band</th><th>Anonymous filing</th><th>Typical time to award</th></tr></thead>
     <tbody>
-      <tr><td>SEC (Exchange Act &sect;21F)</td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions, including related actions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
-      <tr><td>CFTC (Commodity Exchange Act &sect;23)</td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
-      <tr><td>IRS &sect;7623(b)</td><td>Over $2 million in dispute (and gross income over $200,000 if the taxpayer is an individual)</td><td>15&ndash;30% of collected proceeds</td><td>No; identity protected but not anonymous</td><td>5&ndash;10 years</td></tr>
-      <tr><td>IRS &sect;7623(a)</td><td>Below the (b) thresholds</td><td>Up to 15%, capped at $10 million, discretionary</td><td>No</td><td>Varies</td></tr>
-      <tr><td>False Claims Act qui tam (31 U.S.C. &sect;3730)</td><td>None</td><td>15&ndash;25% if DOJ intervenes; 25&ndash;30% if it declines</td><td>Complaint filed under seal; identity disclosed when unsealed</td><td>2&ndash;6 years</td></tr>
+      <tr><td><a href="https://www.law.cornell.edu/uscode/text/15/78u-6" target="_blank" rel="noopener">SEC (Exchange Act &sect;21F)</a></td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions, including related actions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
+      <tr><td><a href="https://www.law.cornell.edu/uscode/text/7/26" target="_blank" rel="noopener">CFTC (Commodity Exchange Act &sect;23)</a></td><td>Sanctions over $1 million</td><td>10&ndash;30% of collected sanctions</td><td>Yes, through counsel</td><td>2&ndash;5 years</td></tr>
+      <tr><td><a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">IRS &sect;7623(b)</a></td><td>Over $2 million in dispute (and gross income over $200,000 if the taxpayer is an individual)</td><td>15&ndash;30% of collected proceeds</td><td>No; identity protected but not anonymous</td><td>5&ndash;10 years</td></tr>
+      <tr><td><a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">IRS &sect;7623(a)</a></td><td>Below the (b) thresholds</td><td>Up to 15%, capped at $10 million, discretionary</td><td>No</td><td>Varies</td></tr>
+      <tr><td><a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">False Claims Act qui tam (31 U.S.C. &sect;3730)</a></td><td>None</td><td>15&ndash;25% if DOJ intervenes; 25&ndash;30% if it declines</td><td>Complaint filed under seal; identity disclosed when unsealed</td><td>2&ndash;6 years</td></tr>
     </tbody>
   </table>
   </div>
@@ -82,20 +81,20 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
 
   <h3>The Statutory Ranges</h3>
   <ul>
-    <li><strong>SEC (15 U.S.C. &sect;78u-6):</strong> 10&ndash;30% of monetary sanctions exceeding $1 million in the covered action and related actions.</li>
-    <li><strong>CFTC (7 U.S.C. &sect;26):</strong> 10&ndash;30% of sanctions exceeding $1 million. Mirrors the SEC structure.</li>
-    <li><strong>IRS (26 U.S.C. &sect;7623(b)):</strong> 15&ndash;30% of collected proceeds where the amount in dispute exceeds $2 million. Reduced to a maximum of 10% where the information came primarily from public sources.</li>
-    <li><strong>False Claims Act (31 U.S.C. &sect;3730(d)):</strong> 15&ndash;25% if the government intervenes; 25&ndash;30% if the relator proceeds alone. No minimum threshold.</li>
+    <li><strong>SEC (<a href="https://www.law.cornell.edu/uscode/text/15/78u-6" target="_blank" rel="noopener">15 U.S.C. &sect;78u-6</a>):</strong> 10&ndash;30% of monetary sanctions exceeding $1 million in the covered action and related actions.</li>
+    <li><strong>CFTC (<a href="https://www.law.cornell.edu/uscode/text/7/26" target="_blank" rel="noopener">7 U.S.C. &sect;26</a>):</strong> 10&ndash;30% of sanctions exceeding $1 million. Mirrors the SEC structure.</li>
+    <li><strong>IRS (<a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">26 U.S.C. &sect;7623(b)</a>):</strong> 15&ndash;30% of collected proceeds where the amount in dispute exceeds $2 million. Reduced to a maximum of 10% where the information came primarily from public sources.</li>
+    <li><strong>False Claims Act (<a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">31 U.S.C. &sect;3730(d)</a>):</strong> 15&ndash;25% if the government intervenes; 25&ndash;30% if the relator proceeds alone. No minimum threshold.</li>
   </ul>
 
   <h3>Factors That Affect the Award Percentage</h3>
-  <p>Within the statutory range, agencies exercise discretion. Under SEC Rule 21F-6, factors that raise an award include the significance and specificity of the information, the assistance provided, the law-enforcement interest in the case, and participation in internal compliance systems. Factors that lower it include culpability in the violation, unreasonable delay in reporting, and interference with internal compliance. The IRS applies a similar list under its regulations at 26 C.F.R. &sect;301.7623-4, and DOJ has published its own relator-share guidelines for FCA cases.</p>
+  <p>Within the statutory range, agencies exercise discretion. Under <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-6" target="_blank" rel="noopener">SEC Rule 21F-6</a>, factors that raise an award include the significance and specificity of the information, the assistance provided, the law-enforcement interest in the case, and participation in internal compliance systems. Factors that lower it include culpability in the violation, unreasonable delay in reporting, and interference with internal compliance. The IRS applies a similar list under its regulations at <a href="https://www.law.cornell.edu/cfr/text/26/301.7623-4" target="_blank" rel="noopener">26 C.F.R. &sect;301.7623-4</a>, and the <a href="https://www.justice.gov/civil/false-claims-act" target="_blank" rel="noopener">Department of Justice</a> has published its own relator-share guidelines for FCA cases.</p>
 
   <h3>What the Awards Actually Look Like</h3>
   <p>The SEC program has paid more than $2 billion in total since 2012, with several individual awards above $100 million. The largest IRS award on record is the $104 million paid to Bradley Birkenfeld for information about offshore tax evasion facilitated by UBS. False Claims Act relator shares run from the tens of thousands to well over $100 million in major healthcare fraud cases. The common thread is that awards scale with what the government actually collects, and most successful cases are far smaller than the headline examples.</p>
 
   <h2>What this calculator does not do</h2>
-  <p>It does not predict whether the government will act on a tip, which is the single biggest determinant of whether any award is paid. It does not model award reductions for a whistleblower&rsquo;s own culpability, the allocation of one award among several whistleblowers on the same matter, related-action sanctions collected by other agencies, state false claims acts, the FCA&rsquo;s first-to-file and public-disclosure bars, or the separate anti-retaliation damages available under Sarbanes-Oxley, Dodd-Frank, and the FCA. Treat the output as an order-of-magnitude estimate for a case that succeeds.</p>
+  <p>It does not predict whether the government will act on a tip, which is the single biggest determinant of whether any award is paid. It does not model award reductions for a whistleblower&rsquo;s own culpability, the allocation of one award among several whistleblowers on the same matter, related-action sanctions collected by other agencies, state false claims acts, the FCA&rsquo;s first-to-file and public-disclosure bars, or the separate anti-retaliation damages available under <a href="https://www.law.cornell.edu/uscode/text/18/1514A" target="_blank" rel="noopener">Sarbanes-Oxley</a>, <a href="https://www.law.cornell.edu/uscode/text/15/78u-6" target="_blank" rel="noopener">Dodd-Frank</a>, and the <a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">FCA</a>. Treat the output as an order-of-magnitude estimate for a case that succeeds.</p>
 
   <h2>Learn More</h2>
   <ul>
@@ -108,10 +107,17 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
     <li><a href="/faq/">Frequently asked questions</a></li>
   </ul>
 
-  <h2>Where to get help</h2>
-  <p>SEC and CFTC tips can be filed directly on each agency&rsquo;s online Tip, Complaint, or Referral portal at no cost, and the IRS accepts Form 211 by mail. Anonymous SEC or CFTC filing requires an attorney, and a False Claims Act case cannot be filed without one, because a qui tam complaint is a federal lawsuit brought in the government&rsquo;s name. Whistleblower attorneys work on contingency and most offer a confidential initial consultation; the National Whistleblower Center and your state bar&rsquo;s referral service are neutral starting points. If you would like The Click Lab to pass your details to an attorney in its network, the optional form below does that; it is a disclosed referral product, and our <a href="/privacy/">privacy policy</a> explains what is shared. Do not include the substance of your allegations in that form.</p>
-
-  <LeadCapture caseType="whistleblower" caseTypeLabel="Whistleblower" />
+  <h2 id="where-to-get-help">Where to get help</h2>
+  <p>File with the agency that runs the program. This site does not take tips, does not ask for a phone number, and does not pass a description of your allegations to a lawyer. Nothing you type into the calculator is sent to us.</p>
+  <ul>
+    <li><strong>Securities.</strong> The <a href="https://www.sec.gov/whistleblower" target="_blank" rel="noopener">SEC Office of the Whistleblower</a> accepts tips on its own portal, at no charge. You do not need a lawyer to file. Anonymous filing is available only if a lawyer submits the tip for you. The award statute is <a href="https://www.law.cornell.edu/uscode/text/15/78u-6" target="_blank" rel="noopener">Exchange Act &sect;21F, 15 U.S.C. &sect;78u-6</a>.</li>
+    <li><strong>Commodities and derivatives.</strong> The CFTC&rsquo;s program is at <a href="https://www.whistleblower.gov/overview" target="_blank" rel="noopener">Whistleblower.gov</a>, and tips are filed from <a href="https://www.whistleblower.gov/overview/submitatip" target="_blank" rel="noopener">that site&rsquo;s tip page</a>. The statute is <a href="https://www.law.cornell.edu/uscode/text/7/26" target="_blank" rel="noopener">Commodity Exchange Act &sect;23, 7 U.S.C. &sect;26</a>.</li>
+    <li><strong>Tax.</strong> The <a href="https://www.irs.gov/compliance/whistleblower-office" target="_blank" rel="noopener">IRS Whistleblower Office</a> takes claims on Form 211. The IRS&rsquo;s current instructions are on <a href="https://www.irs.gov/help/submit-a-whistleblower-claim-for-award" target="_blank" rel="noopener">Submit a whistleblower claim for award</a>. The statute is <a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">26 U.S.C. &sect;7623</a>. The IRS does not offer anonymous filing.</li>
+    <li><strong>Fraud on the federal government.</strong> A False Claims Act qui tam case is a lawsuit filed under seal in federal court, in the government&rsquo;s name, and it requires a lawyer. The relator-share rules are in <a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">31 U.S.C. &sect;3730</a>. The Department of Justice describes the statute and its recoveries on the <a href="https://www.justice.gov/civil/false-claims-act" target="_blank" rel="noopener">Civil Division&rsquo;s False Claims Act page</a>.</li>
+    <li><strong>Bank Secrecy Act and money laundering.</strong> That is a separate program, run by FinCEN under <a href="https://www.law.cornell.edu/uscode/text/31/5323" target="_blank" rel="noopener">31 U.S.C. &sect;5323</a>, not an SEC or IRS tip. FinCEN&rsquo;s page is the <a href="https://www.fincen.gov/whistleblower-program" target="_blank" rel="noopener">FinCEN whistleblower program</a>.</li>
+    <li><strong>A lawyer, if you want one.</strong> For a referral that this website does not sell, use your state bar association&rsquo;s lawyer referral service. The American Bar Association keeps a directory of those services on its <a href="https://www.americanbar.org/groups/legal_services/flh-home/flh-hire-a-lawyer/" target="_blank" rel="noopener">Hire a Lawyer</a> page. Qui tam complaints cannot be filed without counsel. SEC, CFTC, and IRS claims can.</li>
+  </ul>
+  <p>Do not email the facts of a possible claim to this site. The <a href="/contact/">contact address</a> is for corrections and questions about the pages. Read the <a href="/disclaimer/">disclaimer</a> before you treat any figure here as a prediction.</p>
 
   <script>
     const programEl = document.getElementById('program');
@@ -136,7 +142,7 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
 
       if (program === 'irs' && sanctions < r.threshold) {
         const cap = Math.min(sanctions * 0.15, 10000000);
-        out.innerHTML = '<strong>Below the mandatory-award threshold</strong><br>Amounts in dispute under $2,000,000 fall under IRC &sect;7623(a): a discretionary award of up to 15% (here, up to ' + fmt(cap) + '), capped at $10 million, which the IRS may decline to pay. Range: $0 &ndash; ' + fmt(cap) + '.<br><em>Educational estimate only. Consult a whistleblower attorney.</em>';
+        out.innerHTML = '<strong>Below the mandatory-award threshold</strong><br>Amounts in dispute under $2,000,000 fall under <a href="https://www.law.cornell.edu/uscode/text/26/7623" target="_blank" rel="noopener">IRC &sect;7623(a)</a>: a discretionary award of up to 15% (here, up to ' + fmt(cap) + '), capped at $10 million, which the IRS may decline to pay. Range: $0 &ndash; ' + fmt(cap) + '.<br><em>Educational estimate only. File with the IRS, not through this site.</em>';
         return;
       }
       if (sanctions < r.threshold) {
@@ -157,7 +163,7 @@ const description = 'Estimate a potential SEC, CFTC, IRS, or False Claims Act wh
         '<br>Program: ' + programNames[program] +
         '<br>Amount collected: ' + fmt(sanctions) +
         '<br>Applicable award band: ' + Math.round(effMin*100) + '%&ndash;' + Math.round(effMax*100) + '%' +
-        '<br><em>Awards are set by the agency or court on all the facts and paid only on amounts actually collected. Educational estimate only; consult a whistleblower attorney before submitting a tip.</em>';
+        '<br><em>Awards are set by the agency or court on all the facts and paid only on amounts actually collected. Educational estimate only. File the tip with the agency, not through this site.</em>';
     });
   </script>
 </BaseLayout>

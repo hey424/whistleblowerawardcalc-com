@@ -15,36 +15,17 @@ const siteName = "WhistleblowerAwardCalc";
 const brandName = "WhistleblowerAwardCalc";
 const publisherName = "The Click Lab Agency LLC";
 const publisherUrl = "https://theclicklab.agency";
-
-// Editor / reviewer — matches the generic editorial-team bylines on methodology and editorial pages
-const editorInChief = {
-  name: "Editorial Team",
-  credentials: "",
-  role: "Editorial Team",
-  bio: "WhistleblowerAwardCalc content is reviewed by our editorial team, which maintains methodology and editorial standards.",
-  url: `${siteUrl}/editorial/`,
-};
+const organizationId = `${publisherUrl}/#organization`;
 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const ogImage = image ? new URL(image, siteUrl).toString() : new URL('/og-default.png', siteUrl).toString();
 
 const organizationSchema = {
   '@type': 'Organization',
-  '@id': `${publisherUrl}/#organization`,
+  '@id': organizationId,
   name: publisherName,
   url: publisherUrl,
   legalName: publisherName,
-};
-
-const personSchema = {
-  '@type': 'Person',
-  '@id': `${siteUrl}/#editor-in-chief`,
-  name: editorInChief.name,
-  honorificSuffix: editorInChief.credentials,
-  jobTitle: editorInChief.role,
-  description: editorInChief.bio,
-  url: editorInChief.url,
-  worksFor: { '@id': `${publisherUrl}/#organization` },
 };
 
 const websiteSchema = {
@@ -53,13 +34,14 @@ const websiteSchema = {
   url: siteUrl,
   name: siteName,
   alternateName: brandName,
-  publisher: { '@id': `${publisherUrl}/#organization` },
+  publisher: { '@id': organizationId },
+  author: { '@id': organizationId },
   inLanguage: 'en-US',
 };
 
 const siteGraph = {
   '@context': 'https://schema.org',
-  '@graph': [organizationSchema, personSchema, websiteSchema],
+  '@graph': [organizationSchema, websiteSchema],
 };
 ---
 <!DOCTYPE html>
@@ -100,10 +82,10 @@ const siteGraph = {
     <main class="site-main"><div class="container"><slot /></div></main>
     <footer class="site-footer"><div class="container">
       <nav class="footer-nav" aria-label="Footer">
-        <a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/editorial/">Editorial Team</a>
-        <a href="/contact/">Contact</a><a href="/faq/">FAQ</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>
+        <a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/editorial/">Editorial</a>
+        <a href="/contact/">Contact</a><a href="/faq/">FAQ</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a>
       </nav>
-      <p class="footer-credit">&copy; 2026 The Click Lab Agency LLC. Not legal advice. Consult a whistleblower attorney before submitting a tip.</p>
+      <p class="footer-credit">&copy; 2026 The Click Lab Agency LLC. Not legal advice. Estimates only. <a href="/disclaimer/">Read the disclaimer</a>. Tips are filed with the agency, not through this site.</p>
     </div></footer>
     <style is:global>
       :root {--color-bg:#fff;--color-text:#1a1a1a;--color-muted:#555;--color-accent:#0a66c2;--color-border:#e0e0e0;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--max-width:760px;}
@@ -121,6 +103,9 @@ const siteGraph = {
       label{display:block;margin:1rem 0 .25rem;font-weight:600;} input,select{width:100%;padding:.5rem;font-size:1rem;border:1px solid var(--color-border);border-radius:4px;}
       button[type="submit"]{margin-top:1.5rem;padding:.75rem 1.5rem;background:var(--color-accent);color:white;border:none;border-radius:4px;font-size:1rem;font-weight:600;cursor:pointer;} button[type="submit"]:hover{opacity:.9;}
       #result{background:#e8f0fe;border:1px solid #c5d4f5;border-radius:4px;padding:1rem;margin-top:1rem;min-height:1em;}
+      table{border-collapse:collapse;width:100%;font-size:.95rem;margin:1rem 0 1.5rem;}
+      th,td{border:1px solid var(--color-border);padding:.5rem .6rem;text-align:left;vertical-align:top;}
+      th{background:#f7f7f7;}
     </style>
   </body>
 </html>

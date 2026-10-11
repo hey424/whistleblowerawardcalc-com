@@ -1,0 +1,60 @@
+# HTML responses only. A sitewide rule would override CSS, JS, images, and XML.
+# Workers static assets do not support a hostname redirect, so www is not handled here.
+/
+  Content-Type: text/html; charset=utf-8
+/about
+  Content-Type: text/html; charset=utf-8
+/about/
+  Content-Type: text/html; charset=utf-8
+/case-types
+  Content-Type: text/html; charset=utf-8
+/case-types/
+  Content-Type: text/html; charset=utf-8
+/contact
+  Content-Type: text/html; charset=utf-8
+/contact/
+  Content-Type: text/html; charset=utf-8
+/disclaimer
+  Content-Type: text/html; charset=utf-8
+/disclaimer/
+  Content-Type: text/html; charset=utf-8
+/editorial
+  Content-Type: text/html; charset=utf-8
+/editorial/
+  Content-Type: text/html; charset=utf-8
+/faq
+  Content-Type: text/html; charset=utf-8
+/faq/
+  Content-Type: text/html; charset=utf-8
+/guides
+  Content-Type: text/html; charset=utf-8
+/guides/
+  Content-Type: text/html; charset=utf-8
+/guides/false-claims-act-qui-tam
+  Content-Type: text/html; charset=utf-8
+/guides/false-claims-act-qui-tam/
+  Content-Type: text/html; charset=utf-8
+/guides/how-whistleblower-awards-work
+  Content-Type: text/html; charset=utf-8
+/guides/how-whistleblower-awards-work/
+  Content-Type: text/html; charset=utf-8
+/guides/sec-whistleblower-program
+  Content-Type: text/html; charset=utf-8
+/guides/sec-whistleblower-program/
+  Content-Type: text/html; charset=utf-8
+/guides/whistleblower-misconceptions
+  Content-Type: text/html; charset=utf-8
+/guides/whistleblower-misconceptions/
+  Content-Type: text/html; charset=utf-8
+/methodology
+  Content-Type: text/html; charset=utf-8
+/methodology/
+  Content-Type: text/html; charset=utf-8
+/privacy
+  Content-Type: text/html; charset=utf-8
+/privacy/
+  Content-Type: text/html; charset=utf-8
+/terms
+  Content-Type: text/html; charset=utf-8
+/terms/
+  Content-Type: text/html; charset=utf-8

@@ -1,36 +1,91 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = 'Whistleblower Award Guides | whistleblowerawardcalc.com';
-const description = 'Plain-English guides on whistleblower award programs: SEC, IRS, CFTC, False Claims Act qui tam, common misconceptions, and strategic considerations.';
+const description = 'A guide hub for federal whistleblower awards: which of the SEC, CFTC, IRS, and False Claims Act explainers to read, and what each one actually covers.';
 ---
 <BaseLayout title={title} description={description}>
   <h1>Whistleblower Award Guides</h1>
-  <p><em>Published by The Click Lab Agency LLC. Last reviewed September 2026. Not legal advice.</em></p>
+  <p><em>Published by The Click Lab Agency LLC. Last reviewed October 2026. Not legal advice.</em></p>
 
-  <p>Whistleblower programs offer substantial financial awards for individuals who report fraud — but each program has different rules, thresholds, eligibility requirements, and strategic considerations. These guides cover the key programs and the most important decisions potential whistleblowers face.</p>
-  <p>All guides are educational materials, not legal advice. Before taking any action under a whistleblower program, consult a qualified whistleblower attorney. Most offer free, confidential initial consultations.</p>
+  <p>These guides explain how money is awarded after the government collects it. They are not a filing service, and they are not a rating of lawyers. Each one is about a decision people get wrong before they ever talk to the agency: which statute applies, what the percentage is a percentage <em>of</em>, and which procedural step (a Form TCR date, a Form 211, a sealed complaint) is the one that matters.</p>
+  <p>Four programs do most of the work this site covers. They are easy to mix up because each one pays a percentage, and the percentages look similar. They are different statutes, filed in different places, with different thresholds.</p>
 
-  <h2>How awards work across all programs</h2>
-  <h3><a href="/guides/how-whistleblower-awards-work/">How Whistleblower Awards Work</a></h3>
-  <p>The core mechanism of percentage-of-sanctions awards, eligibility requirements across all programs, how agencies exercise discretion within the statutory range, the typical timeline from tip to payment, and the tax treatment of awards.</p>
+  <h2>Which page to open</h2>
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th>The information concerns</th><th>Where the filing goes</th><th>Read first</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Accounting fraud, insider trading, market manipulation, investment-adviser misconduct, or foreign bribery by an issuer</td>
+        <td><a href="https://www.sec.gov/whistleblower" target="_blank" rel="noopener">SEC Office of the Whistleblower</a></td>
+        <td><a href="/guides/sec-whistleblower-program/">The SEC program</a></td>
+      </tr>
+      <tr>
+        <td>Futures, swaps, spoofing, or commodity-price manipulation</td>
+        <td><a href="https://www.whistleblower.gov/overview/submitatip" target="_blank" rel="noopener">CFTC tip page</a></td>
+        <td><a href="/guides/how-whistleblower-awards-work/">How awards work</a>, then the CFTC row on the <a href="/methodology/">methodology</a> page. There is no separate CFTC guide; the band matches the SEC band and the statute is <a href="https://www.law.cornell.edu/uscode/text/7/26" target="_blank" rel="noopener">7 U.S.C. &sect;26</a>.</td>
+      </tr>
+      <tr>
+        <td>Underpaid tax, offshore accounts, abusive shelters, or a promoter of a tax scheme</td>
+        <td><a href="https://www.irs.gov/help/submit-a-whistleblower-claim-for-award" target="_blank" rel="noopener">IRS Form 211</a></td>
+        <td><a href="/guides/how-whistleblower-awards-work/">How awards work</a>, and the IRS threshold section of the <a href="/methodology/">methodology</a></td>
+      </tr>
+      <tr>
+        <td>A false claim for federal money: Medicare and Medicaid, defense contracts, grants, customs duties</td>
+        <td>A sealed complaint in federal court, served on the <a href="https://www.justice.gov/civil/false-claims-act" target="_blank" rel="noopener">Department of Justice</a></td>
+        <td><a href="/guides/false-claims-act-qui-tam/">False Claims Act qui tam</a></td>
+      </tr>
+      <tr>
+        <td>Bank Secrecy Act or sanctions-evasion failures at a financial institution</td>
+        <td><a href="https://www.fincen.gov/whistleblower-program" target="_blank" rel="noopener">FinCEN whistleblower program</a></td>
+        <td><a href="/case-types/">Case types</a>. FinCEN is covered there and on the methodology page, not in its own guide.</td>
+      </tr>
+      <tr>
+        <td>You are unsure you qualify, or you have been told you must be an employee, must report internally, or must wait for a complete file</td>
+        <td>Depends on the statute</td>
+        <td><a href="/guides/whistleblower-misconceptions/">Common misconceptions</a>, then the <a href="/faq/">FAQ</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>If you only want the arithmetic the calculator uses, skip the narrative guides and read the <a href="/methodology/">methodology</a>. If you want the limits on that arithmetic, read the <a href="/disclaimer/">disclaimer</a>.</p>
 
-  <h2>The SEC Whistleblower Program in depth</h2>
-  <h3><a href="/guides/sec-whistleblower-program/">The SEC Whistleblower Program</a></h3>
-  <p>How to submit a Form TCR tip, what qualifies as original information, anonymous submission with attorney representation, the award determination process, and the Dodd-Frank anti-retaliation protections that apply to SEC reporters.</p>
+  <h2>How Whistleblower Awards Work</h2>
+  <h3><a href="/guides/how-whistleblower-awards-work/">The shared structure of the four programs</a></h3>
+  <p>Start here if you do not yet know which statute fits. The guide explains the premise the programs share: an award is a percentage of money the government actually collects, not of the loss, and not of a judgment that is never paid. It then sets out the four eligibility ideas that show up, with variations, in each program. The submission has to be voluntary. The information has to be original. It has to contribute to a successful action. And, except under the False Claims Act, the collected amount has to clear a dollar threshold: more than $1 million in sanctions for the SEC and CFTC, more than $2 million in dispute for the IRS mandatory band.</p>
+  <p>The second half is about what happens inside the band. For the SEC, the factors are codified at <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-6" target="_blank" rel="noopener">17 C.F.R. &sect;240.21F-6</a>. The IRS applies its own list and has historically paid toward the bottom of the range more often than the SEC. The guide also explains why the calendar is measured in years. SEC matters commonly run four to seven years from tip to award order, and IRS matters often run longer because the award waits on collected proceeds. The tax section covers why the award is ordinary income and what <a href="https://www.law.cornell.edu/uscode/text/26/62" target="_blank" rel="noopener">26 U.S.C. &sect;62(a)(21)</a> does with attorney fees. It does not compute anyone&rsquo;s tax.</p>
+
+  <h2>The SEC Whistleblower Program</h2>
+  <h3><a href="/guides/sec-whistleblower-program/">Form TCR, anonymity, and the award order</a></h3>
+  <p>Read this when the conduct is a violation of the federal securities laws, including the Foreign Corrupt Practices Act provisions that apply to issuers. The guide walks through Form TCR, why the submission date matters when two people report the same scheme, and the rule that a preliminary tip can be supplemented without losing that date. Anonymous filing exists only if a lawyer submits the form. You still have to identify yourself to the SEC before it pays.</p>
+  <p>It then covers what <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-6" target="_blank" rel="noopener">Rule 21F-6</a> treats as a strong tip: specific people and transactions, documents rather than a general allegation, information the staff did not already have, and a causal role in the case. The award process after collection runs from a Notice of Eligibility to a Preliminary Determination to a Final Order, which is public as to the amount and not as to the name. The anti-retaliation section explains <a href="https://www.law.cornell.edu/uscode/text/15/78u-6" target="_blank" rel="noopener">Exchange Act &sect;21F(h)</a>, including the limit from <a href="https://www.law.cornell.edu/supremecourt/text/16-1276" target="_blank" rel="noopener"><em>Digital Realty Trust, Inc. v. Somers</em></a>: Dodd-Frank&rsquo;s employment remedy requires a report to the SEC. An internal-only report may still fall under <a href="https://www.law.cornell.edu/uscode/text/18/1514A" target="_blank" rel="noopener">Sarbanes-Oxley &sect;806</a>, which is a different statute with different remedies.</p>
 
   <h2>False Claims Act qui tam suits</h2>
-  <h3><a href="/guides/false-claims-act-qui-tam/">False Claims Act Qui Tam Suits</a></h3>
-  <p>How qui tam complaints are filed under seal, the government's 60-day review and extension period, the intervention decision and what it means for award percentage, FCA treble damages and civil penalties, and the major categories of FCA fraud.</p>
+  <h3><a href="/guides/false-claims-act-qui-tam/">A lawsuit, not a tip form</a></h3>
+  <p>Read this when the fraud is a claim for federal payment. A qui tam case is a civil action the relator files in the name of the United States. It is not an online form. The complaint is filed under seal. The statute gives the government 60 days, and courts routinely extend that seal for a year or more while the <a href="https://www.justice.gov/civil/false-claims-act" target="_blank" rel="noopener">Department of Justice</a> investigates. During the seal the defendant is not served, and talking about the case publicly can damage it.</p>
+  <p>The intervention decision is the number the calculator is asking about. If the government takes over the case, the relator&rsquo;s share of the recovery is 15&ndash;25%. If the government declines and the relator litigates, the share is 25&ndash;30%, on a case the relator now has to fund. Both bands are in <a href="https://www.law.cornell.edu/uscode/text/31/3730" target="_blank" rel="noopener">31 U.S.C. &sect;3730(d)</a>. The guide also covers treble damages, the per-claim civil penalty, the kinds of schemes that produce most of the recoveries (healthcare kickbacks, defense overbilling, grant fraud), and the first-to-file bar in &sect;3730(b)(5), which blocks a later complaint about the same allegations. A lawyer is a practical requirement because the relator is a party in federal court.</p>
 
   <h2>Common misconceptions</h2>
-  <h3><a href="/guides/whistleblower-misconceptions/">Whistleblower Misconceptions</a></h3>
-  <p>Five myths that cause potential whistleblowers to underestimate their eligibility or mishandle their submissions: insider status requirements, internal reporting impact, anti-retaliation coverage, tip value thresholds, and submission timing.</p>
-
-  <h2>Additional resources</h2>
+  <h3><a href="/guides/whistleblower-misconceptions/">Five rules people invert</a></h3>
+  <p>This one is for the reader who has already talked themselves out of reporting, or who is about to report in a way that weakens the claim. Each section names the myth and the provision that answers it.</p>
   <ul>
-    <li><a href="/case-types/">Types of whistleblower cases</a> &mdash; securities, commodities, tax, FCA, and AML fraud categories</li>
-    <li><a href="/methodology/">Calculator methodology</a> &mdash; statutory ranges, thresholds, and adjustment factors</li>
-    <li><a href="/faq/">Frequently asked questions</a></li>
+    <li>You do not have to be an employee of the company involved. <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-2" target="_blank" rel="noopener">17 C.F.R. &sect;240.21F-2</a> defines an eligible SEC whistleblower as an individual who voluntarily provides original information. Outside accountants, contractors, investors, and former employees have qualified.</li>
+    <li>Reporting internally does not, by itself, surrender an SEC award. If you reach the SEC within 120 days, <a href="https://www.law.cornell.edu/cfr/text/17/240.21F-4" target="_blank" rel="noopener">Rule 21F-4(b)(7)</a> treats the internal report date as your submission date. Internal reporting can also be a positive factor under Rule 21F-6(a)(4). It does not, after <em>Digital Realty</em>, supply Dodd-Frank retaliation protection on its own.</li>
+    <li>Anti-retaliation protection does not depend on winning an award. It does, under Dodd-Frank, depend on a report to the SEC.</li>
+    <li>&ldquo;The agency probably already knows&rdquo; is not the originality test. Original information is information from your knowledge or analysis that the agency does not already have. A general newspaper story about an industry is not the same thing as the transactions and the documents.</li>
+    <li>Waiting for a complete file can cost the submission date at the SEC and can cost the case entirely under the False Claims Act first-to-file bar. A preliminary TCR can be supplemented. A second qui tam complaint about the same allegations cannot.</li>
+  </ul>
+
+  <h2>What these guides will not do</h2>
+  <p>They will not tell you that your facts qualify, and they will not estimate the probability that the government opens a case. The calculator&rsquo;s output is an illustration of the statutory band on an amount you chose, which the <a href="/disclaimer/">disclaimer</a> states in full. They also will not introduce you to a lawyer. The offices that take filings are listed on the homepage under <a href="/#where-to-get-help">Where to get help</a>.</p>
+
+  <h2>Related pages</h2>
+  <ul>
+    <li><a href="/case-types/">Types of whistleblower cases</a> &mdash; securities, commodities, tax, false claims, and Bank Secrecy Act categories, with the statute for each</li>
+    <li><a href="/methodology/">Calculator methodology</a> &mdash; the bands, the thresholds, the adjustment factors, and the limits of the model</li>
+    <li><a href="/faq/">Frequently asked questions</a> &mdash; anonymity, retaliation, timing, qui tam compared with a tip, and tax</li>
     <li><a href="/">Whistleblower award calculator</a></li>
   </ul>
 </BaseLayout>
